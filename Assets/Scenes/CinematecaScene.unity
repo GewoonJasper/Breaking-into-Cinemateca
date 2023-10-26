@@ -3035,10 +3035,70 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 995821001534342095, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
+    - target: {fileID: 1139377806364922191, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
+    - target: {fileID: 1352945542436955389, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
+    - target: {fileID: 1488674739014087288, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
+    - target: {fileID: 1596236326525932634, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
+    - target: {fileID: 1885971758780041269, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
+    - target: {fileID: 2398047550917524012, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
+    - target: {fileID: 3488522487426721261, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
+    - target: {fileID: 5470248950192053239, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
+    - target: {fileID: 6525172901836302740, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
+    - target: {fileID: 7661859951670630624, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
+    - target: {fileID: 7839795936196554553, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
+    - target: {fileID: 7973327807499952090, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
     - target: {fileID: 8043854528876281312, guid: a64a8602af189480399706b838d0a94b, type: 3}
       propertyPath: m_Name
       value: Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 8221066521491717079, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
+    - target: {fileID: 8851262208792170245, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69f37aab93afb12438f9f9f17b3f9f2e, type: 2}
     - target: {fileID: 9070512697173898046, guid: a64a8602af189480399706b838d0a94b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
