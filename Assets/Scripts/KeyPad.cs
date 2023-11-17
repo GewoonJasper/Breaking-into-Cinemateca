@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +7,6 @@ public class KeyPad : MonoBehaviour
 {
     [SerializeField] private Text Ans;
     [SerializeField] private Animator DoorOpening;
-
     private string Answer = "1388";
 
     public void Number(int number)
