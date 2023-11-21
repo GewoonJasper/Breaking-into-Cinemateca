@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class KeyPad : MonoBehaviour
 {
+     
     [SerializeField] private Text Ans;
     [SerializeField] private Animator DoorOpening;
     private string Answer = "1388";
@@ -20,10 +21,18 @@ public class KeyPad : MonoBehaviour
         {
             Ans.text = "YES";
             DoorOpening.SetBool("Open", true);
+            StartCoroutine(StopDoor());
         }
         else
         {
             Ans.text = "NO";
+        }
+
+        IEnumerator StopDoor()
+        {
+            yield return new WaitForSeconds(0.5f);
+            DoorOpening.SetBool("Open", false);
+            DoorOpening.enabled = false;
         }
 
     }
