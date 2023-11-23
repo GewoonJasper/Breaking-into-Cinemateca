@@ -35,9 +35,11 @@ public class PatrolState : AStates
 
     public override int StateTransitionCondition()
     {
-        //TODO replace numbers with enum value
-        if (IsAtLocation()) return 1;
-        return -1;
+        bool seenPlayer = AssociatedStateMachine.LineOfSight.SeenObject();
+        
+        if (seenPlayer) return (int) Config.States.Chase;
+        if (IsAtLocation()) return (int) Config.States.Idle;
+        return (int) Config.States.Invalid;
     }
 
     private void MoveToTarget()
@@ -63,5 +65,4 @@ public class PatrolState : AStates
 
         return Vector3.Distance(targetLocation, currentLocation) < 0.1f;
     }
-
 }

@@ -32,8 +32,10 @@ public class IdleState : AStates
     {
         var number = Random.Range(1, 100);
 
-        //TODO replace numbers with enum value
-        if (number <= _changeStateChance) return 0;
-        return -1;
+        bool seenPlayer = AssociatedStateMachine.LineOfSight.SeenObject();
+
+        if (seenPlayer) return (int) Config.States.Chase;
+        if (number <= _changeStateChance) return (int) Config.States.Patrol;
+        return (int) Config.States.Invalid;
     }
 }

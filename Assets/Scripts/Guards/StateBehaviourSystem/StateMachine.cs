@@ -10,6 +10,9 @@ public class StateMachine : MonoBehaviour
     //To control the movement for the guard over the navmesh
     public NavMeshAgent Agent;
 
+    //To control the line of sight
+    public LineOfSight LineOfSight;
+
     //The list of states that the guard can be in
     [SerializeField]
     private List<AStates> _stateBehaviours = new List<AStates>();
