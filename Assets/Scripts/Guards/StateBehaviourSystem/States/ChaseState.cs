@@ -8,8 +8,7 @@ public class ChaseState : AStates
     private string _playerTagName = "";
 
     private GameObject _player;
-    private Transform _playerLocation;
-    private Vector3 _lastPlayerLocation;
+    private Vector3 _playerLocation;
 
     public override bool InitializeState()
     {
@@ -21,7 +20,7 @@ public class ChaseState : AStates
     public override void OnStateStart()
     {
         Debug.Log("<color=yellow>Entering Chase State</color>");
-        _playerLocation = _player.transform;
+        _playerLocation = _player.transform.position;
     }
 
     public override void OnStateUpdate()
@@ -30,11 +29,9 @@ public class ChaseState : AStates
         bool seenPlayer = AssociatedStateMachine.LineOfSight.SeenObject();
         if (seenPlayer)
         {
-            Debug.Log("Seen player");
-            _playerLocation = _player.transform;
-            _lastPlayerLocation = _playerLocation.position;
+            _playerLocation = _player.transform.position;
 
-            AssociatedStateMachine.Agent.SetDestination(_playerLocation.position);
+            AssociatedStateMachine.Agent.SetDestination(_playerLocation);
         }
     }
 
@@ -51,10 +48,7 @@ public class ChaseState : AStates
 
     private bool IsAtLocation()
     {
-        if (_lastPlayerLocation == null)
-            return false;
-
-        var targetLocation = _lastPlayerLocation;
+        var targetLocation = _playerLocation;
         var currentLocation = transform.position;
 
         return Vector3.Distance(targetLocation, currentLocation) < 0.1f;
