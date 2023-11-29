@@ -11,11 +11,19 @@ public class KeyPadControl : MonoBehaviour
     private string _code = "0000"; // A string because int would not add leading zero
 
     [SerializeField]
+    [Tooltip("The text to display the code")]
     private TextMeshProUGUI _codeText;
 
     [SerializeField]
     [Tooltip("The door to unlock")]
     private GameObject _door;
+
+    [SerializeField]
+    private AudioSource _audioSource;
+
+    public AudioClip CorrectSound;
+    public AudioClip IncorrectSound;
+    public AudioClip ButtonSound;
 
     private string _currentCode = "";
 
@@ -55,6 +63,12 @@ public class KeyPadControl : MonoBehaviour
         }
     }
 
+    private void PlaySound(AudioClip sound)
+    {
+        _audioSource.clip = sound;
+        _audioSource.Play();
+    }
+
     /// <summary>
     /// Adds a number to the current code
     /// </summary>
@@ -64,6 +78,7 @@ public class KeyPadControl : MonoBehaviour
         if (!_enabled) return;
         if (_currentCode.Length >= _code.Length) return;
 
+        PlaySound(ButtonSound);
         _currentCode += number;
 
         ShowCode();
@@ -74,7 +89,12 @@ public class KeyPadControl : MonoBehaviour
     /// </summary>
     public void Cancel()
     {
+        if (!_enabled) return;
+
+        PlaySound(ButtonSound);
+
         _currentCode = "";
+        ShowCode();
     }
 
     /// <summary>
@@ -83,6 +103,8 @@ public class KeyPadControl : MonoBehaviour
     public void CheckCode()
     {
         if (!_enabled) return;
+
+        PlaySound(ButtonSound);
 
         if (_currentCode.Equals(_code)) CodeCorrect();
         else CodeIncorrect();
@@ -93,6 +115,7 @@ public class KeyPadControl : MonoBehaviour
     /// </summary>
     private void CodeCorrect()
     {
+        PlaySound(CorrectSound);
         //Rotate the door 90 degrees over the y axis
         _door.transform.Rotate(0, 90, 0);
     }
@@ -102,6 +125,9 @@ public class KeyPadControl : MonoBehaviour
     /// </summary>
     private void CodeIncorrect()
     {
-        Cancel();
+        PlaySound(IncorrectSound);
+
+        _currentCode = "";
+        ShowCode();
     }
 }
