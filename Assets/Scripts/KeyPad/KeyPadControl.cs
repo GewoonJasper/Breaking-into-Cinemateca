@@ -26,8 +26,7 @@ public class KeyPadControl : MonoBehaviour
     public AudioClip ButtonSound;
 
     private string _currentCode = "";
-
-    private bool _enabled = true;
+    private bool _unlocked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,19 +35,19 @@ public class KeyPadControl : MonoBehaviour
         if (_door == null)
         {
             Debug.LogError("Door is not set in the inspector!");
-            this.enabled = false;
+            gameObject.SetActive(false);
         }
 
         //Check if the code is set and can be parsed to an int
         //There is probably a better way to do this
         try
         {
-            int code = int.Parse(_code);
+            int.Parse(_code);
         }
         catch
         {
             Debug.LogError("Code is not a numerical combination!");
-            this.enabled = false;
+            gameObject.SetActive(false);
         }
 
         ShowCode();
@@ -75,8 +74,7 @@ public class KeyPadControl : MonoBehaviour
     /// <param name="number">The number to add</param>
     public void AddNumber(int number)
     {
-        if (!_enabled) return;
-        if (_currentCode.Length >= _code.Length) return;
+        if (_unlocked || _currentCode.Length >= _code.Length) return;
 
         PlaySound(ButtonSound);
         _currentCode += number;
@@ -89,7 +87,7 @@ public class KeyPadControl : MonoBehaviour
     /// </summary>
     public void Cancel()
     {
-        if (!_enabled) return;
+        if (_unlocked) return;
 
         PlaySound(ButtonSound);
 
@@ -102,7 +100,7 @@ public class KeyPadControl : MonoBehaviour
     /// </summary>
     public void CheckCode()
     {
-        if (!_enabled) return;
+        if (_unlocked) return;
 
         PlaySound(ButtonSound);
 
@@ -116,8 +114,12 @@ public class KeyPadControl : MonoBehaviour
     private void CodeCorrect()
     {
         PlaySound(CorrectSound);
-        //Rotate the door 90 degrees over the y axis
-        _door.transform.Rotate(0, 90, 0);
+
+        //Play door open animation
+        //Later maybe change this to a grabbable door instead of animation
+        _door.GetComponent<Animator>().SetTrigger("DoorUnlocked");
+
+        _unlocked = true;
     }
 
     /// <summary>

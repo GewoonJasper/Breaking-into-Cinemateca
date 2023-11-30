@@ -39,11 +39,8 @@ public class KeyPadButton : XRSimpleInteractable
         }
     }
 
-    protected override void OnSelectEntered(SelectEnterEventArgs args)
-    {
-        //base.OnSelectEntered(args);
-        switch (_buttonType)
-        {
+    protected override void OnSelectEntered(SelectEnterEventArgs args) {
+        switch (_buttonType) {
             case ButtonType.Number:
                 _keyPadControl.AddNumber(_number);
                 break;
@@ -55,4 +52,20 @@ public class KeyPadButton : XRSimpleInteractable
                 break;
         }
     }
+
+    //protected override void OnHoverEntered(HoverEnterEventArgs args)
+    //{
+    //    switch (_buttonType)
+    //    {
+    //        case ButtonType.Number:
+    //            _keyPadControl.AddNumber(_number);
+    //            break;
+    //        case ButtonType.Cancel:
+    //            _keyPadControl.Cancel();
+    //            break;
+    //        case ButtonType.Enter:
+    //            _keyPadControl.CheckCode();
+    //            break;
+    //    }
+    //}
 }
