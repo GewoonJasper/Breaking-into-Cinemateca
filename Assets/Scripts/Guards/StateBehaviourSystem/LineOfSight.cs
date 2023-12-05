@@ -5,7 +5,7 @@ using UnityEngine;
 public class LineOfSight : MonoBehaviour
 {
     [SerializeField] 
-    private string _objectToFind = "";
+    private GameObject _objectToFind;
 
     private Transform _transformObject;
     private bool _seenObject = false;
@@ -15,7 +15,7 @@ public class LineOfSight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _transformObject = GameObject.Find(_objectToFind).transform;
+        _transformObject = _objectToFind.transform; //GameObject.Find(_objectToFind).transform;
     }
 
     // Update is called once per frame
