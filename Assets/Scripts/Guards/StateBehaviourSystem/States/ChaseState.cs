@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class ChaseState : AStates
 {
-    [SerializeField]
-    private string _playerTagName = "";
+    //[SerializeField]
+    //private string _playerTagName = "";
 
-    private GameObject _player;
+    public GameObject Player;
     private Vector3 _playerLocation;
 
     public override bool InitializeState()
     {
-        _player = GameObject.Find(_playerTagName);
+        //_player = GameObject.Find(_playerTagName);
 
-        return _player;
+        return Player;
     }
 
     public override void OnStateStart()
     {
         Debug.Log("<color=yellow>Entering Chase State</color>");
-        _playerLocation = _player.transform.position;
+        _playerLocation = Player.transform.position;
     }
 
     public override void OnStateUpdate()
@@ -29,7 +29,7 @@ public class ChaseState : AStates
         bool seenPlayer = AssociatedStateMachine.LineOfSight.SeenObject();
         if (seenPlayer)
         {
-            _playerLocation = _player.transform.position;
+            _playerLocation = Player.transform.position;
 
             AssociatedStateMachine.Agent.SetDestination(_playerLocation);
         }
@@ -51,6 +51,6 @@ public class ChaseState : AStates
         var targetLocation = _playerLocation;
         var currentLocation = transform.position;
 
-        return Vector3.Distance(targetLocation, currentLocation) < 0.1f;
+        return Vector3.Distance(targetLocation, currentLocation) < 0.5f;
     }
 }

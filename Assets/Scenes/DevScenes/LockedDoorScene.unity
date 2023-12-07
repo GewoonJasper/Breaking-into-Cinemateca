@@ -791,7 +791,7 @@ Animator:
   m_GameObject: {fileID: 579073898}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ea5cb858cf203264394d26f6475a85dd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 47700bc1ad3ce094392b9e8a7aabc385, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2593,6 +2593,14 @@ PrefabInstance:
       propertyPath: IncorrectSound
       value: 
       objectReference: {fileID: 8300000, guid: 7479ecdcc3f9fdc43923fac9f8cdecbb, type: 3}
+    - target: {fileID: 9193632983793791913, guid: 4a6c3cf4e0026074a826a1d7289ffb07, type: 3}
+      propertyPath: _doors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193632983793791913, guid: 4a6c3cf4e0026074a826a1d7289ffb07, type: 3}
+      propertyPath: _doors.Array.data[0]
+      value: 
+      objectReference: {fileID: 579073898}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

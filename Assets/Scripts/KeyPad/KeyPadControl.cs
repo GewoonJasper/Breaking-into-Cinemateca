@@ -16,7 +16,7 @@ public class KeyPadControl : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The door to unlock")]
-    private GameObject _door;
+    private List<GameObject> _doors = new List<GameObject>();
 
     [SerializeField]
     private AudioSource _audioSource;
@@ -32,7 +32,7 @@ public class KeyPadControl : MonoBehaviour
     void Start()
     {
         //Check if the door is set
-        if (_door == null)
+        if (_doors.Count == 0)
         {
             Debug.LogError("Door is not set in the inspector!");
             gameObject.SetActive(false);
@@ -117,7 +117,8 @@ public class KeyPadControl : MonoBehaviour
 
         //Play door open animation
         //Later maybe change this to a grabbable door instead of animation
-        _door.GetComponent<Animator>().SetTrigger("DoorUnlocked");
+        foreach (var door in _doors)
+            door.GetComponent<Animator>().SetTrigger("DoorUnlocked");
 
         _unlocked = true;
     }
