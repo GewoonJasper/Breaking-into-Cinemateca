@@ -1,19 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ChaseState : AStates
 {
-    //[SerializeField]
-    //private string _playerTagName = "";
-
     public GameObject Player;
     private Vector3 _playerLocation;
 
     public override bool InitializeState()
     {
-        //_player = GameObject.Find(_playerTagName);
-
         return Player;
     }
 
@@ -42,6 +38,7 @@ public class ChaseState : AStates
 
     public override int StateTransitionCondition()
     {
+        if (Vector3.Distance(transform.position, _playerLocation) < 2) return (int) Config.States.Catch;
         if (IsAtLocation()) return (int) Config.States.Patrol;
         return (int) Config.States.Invalid;
     }
