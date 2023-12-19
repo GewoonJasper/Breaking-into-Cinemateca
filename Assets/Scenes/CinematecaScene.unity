@@ -1084,6 +1084,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Traseira-Cinemateca
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0dd7993cf6370465a8cc00edf8e365fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8073,6 +8077,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 71b2f830cc22bc247acc95659569e384, type: 3}
       propertyPath: m_Name
       value: Facade Cinemateca
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 71b2f830cc22bc247acc95659569e384, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1751846618102629662, guid: 71b2f830cc22bc247acc95659569e384, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15263,6 +15271,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainStairs
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d23d7b926631a4fb193dcfd841d2b265, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 974584544777506935, guid: d23d7b926631a4fb193dcfd841d2b265, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -16093,6 +16105,63 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _keyPadControl: {fileID: 1538429252}
+--- !u!1001 &1217724138
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 377c220b9f53a4ffaa3f50852ad85b93, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.0857506
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 377c220b9f53a4ffaa3f50852ad85b93, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 377c220b9f53a4ffaa3f50852ad85b93, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -33.14
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 377c220b9f53a4ffaa3f50852ad85b93, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.0000002980232
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 377c220b9f53a4ffaa3f50852ad85b93, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 377c220b9f53a4ffaa3f50852ad85b93, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 377c220b9f53a4ffaa3f50852ad85b93, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 377c220b9f53a4ffaa3f50852ad85b93, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 377c220b9f53a4ffaa3f50852ad85b93, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 377c220b9f53a4ffaa3f50852ad85b93, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 377c220b9f53a4ffaa3f50852ad85b93, type: 3}
+      propertyPath: m_Name
+      value: Cinemateca_full
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 377c220b9f53a4ffaa3f50852ad85b93, type: 3}
 --- !u!1 &1221000786
 GameObject:
   m_ObjectHideFlags: 0
@@ -29325,6 +29394,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cinemateca
       objectReference: {fileID: 0}
+    - target: {fileID: 8043854528876281312, guid: a64a8602af189480399706b838d0a94b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8221066521491717079, guid: a64a8602af189480399706b838d0a94b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -29420,3 +29493,4 @@ SceneRoots:
   - {fileID: 78928674}
   - {fileID: 15885886}
   - {fileID: 1383524623}
+  - {fileID: 1217724138}
