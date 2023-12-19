@@ -10,5 +10,6 @@ public class Config : MonoBehaviour
         Idle = 0,
         Patrol = 1,
         Chase = 2,
+        Catch = 3
     }
 }
