@@ -2197,34 +2197,6 @@
                     "isPartOfComposite": false
                 }
             ]
-        },
-        {
-            "name": "PauseMenu",
-            "id": "f60401a1-4edb-43e6-8ff2-af422e58a4ee",
-            "actions": [
-                {
-                    "name": "MenuPressed",
-                    "type": "Button",
-                    "id": "80394dd2-d447-4790-9850-3bdbd85ba724",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "62ba9d15-2e89-47a7-83a9-2cdd4074d79d",
-                    "path": "<OculusRemote>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MenuPressed",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
         }
     ],
     "controlSchemes": [

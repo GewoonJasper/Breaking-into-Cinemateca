@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Filtering;
 
 public class KeyPadButton : XRSimpleInteractable
 {
@@ -49,4 +52,20 @@ public class KeyPadButton : XRSimpleInteractable
                 break;
         }
     }
+
+    //protected override void OnHoverEntered(HoverEnterEventArgs args)
+    //{
+    //    switch (_buttonType)
+    //    {
+    //        case ButtonType.Number:
+    //            _keyPadControl.AddNumber(_number);
+    //            break;
+    //        case ButtonType.Cancel:
+    //            _keyPadControl.Cancel();
+    //            break;
+    //        case ButtonType.Enter:
+    //            _keyPadControl.CheckCode();
+    //            break;
+    //    }
+    //}
 }
