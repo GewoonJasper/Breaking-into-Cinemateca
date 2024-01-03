@@ -2068,7 +2068,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 371189452}
-  _isPaused: 0
+  _rayInteractors: []
+  _movement: {fileID: 0}
 --- !u!1 &892895391
 GameObject:
   m_ObjectHideFlags: 0

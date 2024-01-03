@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -8,7 +10,12 @@ public class PauseMenu : MonoBehaviour
     private Camera _camera;
 
     [SerializeField]
-    private bool _isPaused;
+    private List<XRRayInteractor> _rayInteractors;
+
+    [SerializeField] 
+    private ContinuousMoveProviderBase _movement;
+    
+    private bool _isPaused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +46,19 @@ public class PauseMenu : MonoBehaviour
 
     private void TogglePauseMenu()
     {
+        //Switch pause state
         _isPaused = !_isPaused;
+
+        //(De-)acivate the pause menu
         gameObject.SetActive(_isPaused);
+
+        //(Un-)pause game
         Time.timeScale = _isPaused ? 0 : 1;
+
+        //Disable/Enable movement and ray interactor
+        //_movement.enabled = !_isPaused;
+
+        foreach (var xrRayInteractor in _rayInteractors)
+            xrRayInteractor.enabled = _isPaused;
     }
 }
