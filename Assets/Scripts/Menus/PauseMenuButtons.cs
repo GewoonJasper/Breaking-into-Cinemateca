@@ -1,30 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuButtons : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public FadeScreen FadeScreen;
     
     public void RestartButton()
     {
+        FadeScreen.FadeOut();
+        
+        //while (!FadeScreen.HasFaded()) { }
         SceneManager.LoadScene("CinematecaScene");
     }
 
     public void MainMenuButton()
     {
+        FadeScreen.FadeOut();
+
+        //while (!FadeScreen.HasFaded()) { }
         SceneManager.LoadScene("MainMenuScene");
     }
 }

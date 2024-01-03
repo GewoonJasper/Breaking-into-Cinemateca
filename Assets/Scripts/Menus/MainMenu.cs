@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public FadeScreen FadeScreen;
+
     public void StartGame()
     {
-        //TODO Add fade out
+        FadeScreen.FadeOut();
+        
+        //while (!FadeScreen.HasFaded()) { }
         SceneManager.LoadScene("IntroductionScene");
     }
 
