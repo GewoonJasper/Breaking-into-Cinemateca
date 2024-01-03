@@ -2216,7 +2216,7 @@
                 {
                     "name": "",
                     "id": "62ba9d15-2e89-47a7-83a9-2cdd4074d79d",
-                    "path": "<OculusRemote>/start",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerOpenXR>/thumbstickclicked",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
