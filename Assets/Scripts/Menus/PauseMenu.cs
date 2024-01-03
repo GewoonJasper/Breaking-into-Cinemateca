@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
     private Camera _camera;
 
     [SerializeField]
-    private List<XRRayInteractor> _rayInteractors;
+    private List<XRRayInteractor> _rayInteractors = new List<XRRayInteractor>();
 
     [SerializeField] 
     private ContinuousMoveProviderBase _movement;
@@ -56,7 +56,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = _isPaused ? 0 : 1;
 
         //Disable/Enable movement and ray interactor
-        //_movement.enabled = !_isPaused;
+        //if (_movement) _movement.enabled = !_isPaused;
 
         foreach (var xrRayInteractor in _rayInteractors)
             xrRayInteractor.enabled = _isPaused;

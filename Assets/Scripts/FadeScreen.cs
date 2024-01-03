@@ -33,7 +33,6 @@ public class FadeScreen : MonoBehaviour
 
     public bool HasFaded()
     {
-        Debug.Log(_hasFaded);
         return _hasFaded;
     }
 
@@ -53,10 +52,10 @@ public class FadeScreen : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-
+        
         _fadeColor.a = alphaOut;
         _renderer.material.color = _fadeColor;
-
+        
         _hasFaded = true;
     }
 }
