@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class PauseMenu : MonoBehaviour
@@ -12,36 +11,32 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private List<XRRayInteractor> _rayInteractors = new List<XRRayInteractor>();
 
-    [SerializeField] 
-    private ContinuousMoveProviderBase _movement;
+    [SerializeField]
+    private InputActionProperty _pauseButton;
     
-    private bool _isPaused = false;
+    private bool _isPaused = true;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        _isPaused = !_isPaused;
+        //Hide the pause menu (it starts on true and toggles to off by calling this function)
         TogglePauseMenu();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_pauseButton.action.triggered) TogglePauseMenu();
+
         if (!_isPaused) return;
 
         Vector3 headPos = _camera.transform.position;
         Vector3 gazeDir = _camera.transform.forward;
 
-        transform.position = (headPos + gazeDir * 3.0f) + new Vector3(0.0f, -.40f, 0.0f);
+        transform.position = (headPos + gazeDir * 3.0f) + new Vector3(-0.5f, -.40f, 0.0f);
         transform.position = new Vector3(transform.position.x, headPos.y, transform.position.z);
 
         Vector3 vRot = _camera.transform.eulerAngles; vRot.z = 0;
         transform.eulerAngles = vRot;
-    }
-
-    public void PauseButtonPressed(InputAction.CallbackContext context)
-    {
-        if (context.performed) TogglePauseMenu();
     }
 
     private void TogglePauseMenu()
@@ -49,15 +44,14 @@ public class PauseMenu : MonoBehaviour
         //Switch pause state
         _isPaused = !_isPaused;
 
-        //(De-)acivate the pause menu
-        gameObject.SetActive(_isPaused);
+        //Show/hide the pause menu
+        foreach (Transform child in transform)
+            child.gameObject.SetActive(_isPaused);
 
         //(Un-)pause game
         Time.timeScale = _isPaused ? 0 : 1;
-
-        //Disable/Enable movement and ray interactor
-        //if (_movement) _movement.enabled = !_isPaused;
-
+        
+        if (_rayInteractors.Count == 0) return;
         foreach (var xrRayInteractor in _rayInteractors)
             xrRayInteractor.enabled = _isPaused;
     }

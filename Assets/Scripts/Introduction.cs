@@ -16,6 +16,8 @@ public class Introduction : MonoBehaviour
     public AudioSource DriverVoice;
     private bool _startedPlaying = false;
 
+    private bool _stoppedPlaying = false;
+
     /// <summary>
     /// Make van sound fade in, as to not suddenly have the sound in your ears
     /// </summary>
@@ -42,10 +44,14 @@ public class Introduction : MonoBehaviour
 
         if (DriverVoice.isPlaying) return;
 
-        FadeScreen.FadeOut();
-        NoAmbience.TransitionTo(4);
+        if (!_stoppedPlaying)
+        {
+            FadeScreen.FadeOut();
+            NoAmbience.TransitionTo(4);
+        }
 
-        //TODO Fix this
+        _stoppedPlaying = true;
+        
         if (FadeScreen.HasFaded())
             SceneManager.LoadScene("CinematecaScene");
     }
