@@ -2216,10 +2216,10 @@
                 {
                     "name": "",
                     "id": "62ba9d15-2e89-47a7-83a9-2cdd4074d79d",
-                    "path": "<OculusTouchController>/thumbstickClicked",
+                    "path": "<OculusTouchController>{LeftHand}/menu",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Continuous Move",
+                    "groups": "",
                     "action": "MenuPressed",
                     "isComposite": false,
                     "isPartOfComposite": false
