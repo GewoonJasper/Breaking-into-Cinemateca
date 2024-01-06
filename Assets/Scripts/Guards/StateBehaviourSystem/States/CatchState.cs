@@ -3,11 +3,10 @@ using UnityEngine;
 public class CatchState : AStates
 {
     public GameObject Player;
-    private Vector3 _playerStartLocation;
+    public CaughtMenu CaughtMenu;
 
     public override bool InitializeState()
     {
-        _playerStartLocation = Player.transform.position;
         return Player;
     }
 
@@ -15,7 +14,7 @@ public class CatchState : AStates
     {
         Debug.Log("<color=purple>Entering Catch State</color>");
         //TODO Guard catch animation
-        Player.transform.position = _playerStartLocation;
+        CaughtMenu.PlayerCaught();
     }
 
     public override void OnStateUpdate() {}
