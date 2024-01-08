@@ -13,6 +13,8 @@ public class StateMachine : MonoBehaviour
     //To control the line of sight
     public LineOfSight LineOfSight;
 
+    public Animator GuardAnimator;
+
     //The list of states that the guard can be in
     [SerializeField]
     private List<AStates> _stateBehaviours = new List<AStates>();
