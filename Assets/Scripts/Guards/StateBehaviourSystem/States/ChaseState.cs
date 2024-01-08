@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ChaseState : AStates
@@ -20,8 +21,6 @@ public class ChaseState : AStates
 
     public override bool InitializeState()
     {
-        _targetSpeed = 1.0f;
-
         return Player;
     }
 
@@ -64,6 +63,7 @@ public class ChaseState : AStates
 
     public override int StateTransitionCondition()
     {
+        if (Vector3.Distance(transform.position, _playerLocation) < 2) return (int) Config.States.Catch;
         if (IsAtLocation()) return (int) Config.States.Patrol;
         return (int) Config.States.Invalid;
     }

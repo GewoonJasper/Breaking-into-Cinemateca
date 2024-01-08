@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This script is made specifically for the Introduction scene
@@ -7,17 +8,22 @@ using UnityEngine.Audio;
 /// </summary>
 public class Introduction : MonoBehaviour
 {
+    public FadeScreen FadeScreen;
+
     public AudioMixerSnapshot NoAmbience;
     public AudioMixerSnapshot Ambience;
 
     public AudioSource DriverVoice;
+    private bool _startedPlaying = false;
+
+    private bool _stoppedPlaying = false;
 
     /// <summary>
     /// Make van sound fade in, as to not suddenly have the sound in your ears
     /// </summary>
     void Start()
     {
-        Ambience.TransitionTo(1);
+        Ambience.TransitionTo(2);
     }
 
     /// <summary>
@@ -26,9 +32,27 @@ public class Introduction : MonoBehaviour
     /// </summary>
     void Update()
     {
+        switch (_startedPlaying)
+        {
+            case false when !FadeScreen.HasFaded():
+                return;
+            case false:
+                _startedPlaying = true;
+                DriverVoice.Play();
+                break;
+        }
+
         if (DriverVoice.isPlaying) return;
 
-        NoAmbience.TransitionTo(4);
-        Fader.FadeOut();
+        if (!_stoppedPlaying)
+        {
+            FadeScreen.FadeOut();
+            NoAmbience.TransitionTo(2);
+        }
+
+        _stoppedPlaying = true;
+        
+        if (FadeScreen.HasFaded())
+            SceneManager.LoadScene("CinematecaScene");
     }
 }
