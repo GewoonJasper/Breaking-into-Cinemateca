@@ -23,7 +23,7 @@ public class Introduction : MonoBehaviour
     /// </summary>
     void Start()
     {
-        Ambience.TransitionTo(1);
+        Ambience.TransitionTo(2);
     }
 
     /// <summary>
@@ -47,7 +47,7 @@ public class Introduction : MonoBehaviour
         if (!_stoppedPlaying)
         {
             FadeScreen.FadeOut();
-            NoAmbience.TransitionTo(4);
+            NoAmbience.TransitionTo(2);
         }
 
         _stoppedPlaying = true;
