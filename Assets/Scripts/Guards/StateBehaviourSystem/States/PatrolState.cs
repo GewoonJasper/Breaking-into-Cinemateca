@@ -132,7 +132,6 @@ public class PatrolState : AStates
 
                 _timer = Mathf.Clamp01(_timer + Time.deltaTime / (_timeForTransition * 2));
                 AssociatedStateMachine.GuardAnimator.SetFloat("RotationSpeed", Mathf.Lerp(0.5f, targetDirection, _timer));
-                Debug.Log(AssociatedStateMachine.GuardAnimator.deltaRotation);
                 //transform.rotation = AssociatedStateMachine.GuardAnimator.deltaRotation;
 
                 if (_timer >= 1.0f)
