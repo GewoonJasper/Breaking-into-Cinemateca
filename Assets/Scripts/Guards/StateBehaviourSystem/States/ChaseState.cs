@@ -2,11 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ChaseState : AStates
 {
     public GameObject Player;
     private Vector3 _playerLocation;
+
+    [SerializeField]
+    private AmbienceTrigger _ambienceTrigger;
+
+    [SerializeField]
+    private AudioMixerSnapshot _chaseMusic;
+    private AudioMixerSnapshot _oldAmbience;
+    private bool _hasChangedAmbience = false;
 
     [SerializeField] 
     private float _runningSpeed = 1.0f;
@@ -26,7 +35,9 @@ public class ChaseState : AStates
 
     public override void OnStateStart()
     {
-        Debug.Log("<color=yellow>Entering Chase State</color>");
+        if (AssociatedStateMachine.DebugOn)
+            Debug.Log("<color=yellow>Entering Chase State</color>");
+        
         _playerLocation = Player.transform.position;
 
         AssociatedStateMachine.Agent.speed = 0;
@@ -34,12 +45,21 @@ public class ChaseState : AStates
         _timer = 0.0f;
 
         _initialSpeed = AssociatedStateMachine.GuardAnimator.GetFloat("MovementSpeed");
+
+        _oldAmbience = _ambienceTrigger.Ambience;
+        _ambienceTrigger.Ambience = _chaseMusic;
     }
 
     public override void OnStateUpdate()
     {
         if (!AssociatedStateMachine.GuardAnimator.GetCurrentAnimatorStateInfo(0).IsName("Pointing"))
         {
+            if (!_hasChangedAmbience)
+            {
+                _ambienceTrigger.ChangeAmbience();
+                _hasChangedAmbience = true;
+            }
+
             _timer = Mathf.Clamp01(_timer + Time.deltaTime / _timeForTransition);
             AssociatedStateMachine.GuardAnimator.SetFloat("MovementSpeed", Mathf.Lerp(_initialSpeed, _targetSpeed, _timer));
 
@@ -58,7 +78,12 @@ public class ChaseState : AStates
     public override void OnStateEnd()
     {
         AssociatedStateMachine.GuardAnimator.SetFloat("MovementSpeed", 1);
-        Debug.Log("<color=yellow>Exiting Chase State</color>");
+        
+        _ambienceTrigger.Ambience = _oldAmbience;
+        _ambienceTrigger.ChangeAmbience();
+        
+        if (AssociatedStateMachine.DebugOn)
+            Debug.Log("<color=yellow>Exiting Chase State</color>");
     }
 
     public override int StateTransitionCondition()

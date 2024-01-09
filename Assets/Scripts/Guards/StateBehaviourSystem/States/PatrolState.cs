@@ -33,7 +33,9 @@ public class PatrolState : AStates
 
     public override void OnStateStart()
     {
-        Debug.Log("<color=green>Entering Patrol State</color>");
+        if (AssociatedStateMachine.DebugOn)
+            Debug.Log("<color=green>Entering Patrol State</color>");
+        
         SetTarget();
 
         AssociatedStateMachine.Agent.speed = 0;
@@ -54,7 +56,9 @@ public class PatrolState : AStates
     public override void OnStateEnd()
     {
         AssociatedStateMachine.GuardAnimator.SetFloat("MovementSpeed", 0.5f);
-        Debug.Log("<color=green>Exiting Patrol State</color>");
+        
+        if (AssociatedStateMachine.DebugOn)
+            Debug.Log("<color=green>Exiting Patrol State</color>");
     }
 
     public override int StateTransitionCondition()
@@ -65,6 +69,10 @@ public class PatrolState : AStates
         {
             AssociatedStateMachine.GuardAnimator.Play("Pointing");
             AssociatedStateMachine.GuardAnimator.SetFloat("MovementSpeed", 1);
+
+            AssociatedStateMachine.Audio.clip = AssociatedStateMachine.PlayerSeen;
+            AssociatedStateMachine.Audio.Play();
+
             return (int) Config.States.Chase;
         }
         if (IsAtLocation()) return (int) Config.States.Idle;
