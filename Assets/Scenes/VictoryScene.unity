@@ -173,7 +173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb6be596aa7853479e3c4096ab73021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeScreen: {fileID: 0}
+  FadeScreen: {fileID: 2046048282}
+  _audioSource: {fileID: 0}
+  _restartAudio: {fileID: 0}
 --- !u!114 &193929233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95b8c7a34c87734891548cbc8c7e03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeScreen: {fileID: 0}
+  FadeScreen: {fileID: 2046048282}
 --- !u!135 &193929234
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1719,6 +1721,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeScreen: {fileID: 0}
+  _audioSource: {fileID: 0}
+  _restartAudio: {fileID: 0}
 --- !u!114 &684738056
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ public class PauseMenuButtons : MonoBehaviour
                 _audioPlayed = true;
             }
 
-            if (!_audioSource.isPlaying) SceneManager.LoadScene(_sceneName);
+            if (_audioSource == null || !_audioSource.isPlaying) SceneManager.LoadScene(_sceneName);
         }
     }
 

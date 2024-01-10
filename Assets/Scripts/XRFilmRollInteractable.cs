@@ -11,8 +11,6 @@ public class XRFilmRollInteractable : XRGrabInteractable
     /// </summary>
     void Update()
     {
-        Debug.Log(isSelected + " " + DoorInteractable.isSelected);
-
         if (isSelected && DoorInteractable.isSelected)
             SceneManager.LoadScene("VictoryScene");
     }
