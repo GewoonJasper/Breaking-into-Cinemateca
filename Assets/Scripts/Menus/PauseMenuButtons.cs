@@ -23,7 +23,7 @@ public class PauseMenuButtons : MonoBehaviour
 
         if (FadeScreen.HasFaded())
         {
-            if (!_audioPlayed)
+            if (!_audioPlayed && _sceneName == "CinematecaScene")
             {
                 _audioSource.Play();
                 _audioPlayed = true;

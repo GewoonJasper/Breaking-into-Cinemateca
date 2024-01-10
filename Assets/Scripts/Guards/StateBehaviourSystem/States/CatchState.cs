@@ -31,6 +31,6 @@ public class CatchState : AStates
 
     public override int StateTransitionCondition()
     {
-        return (int) Config.States.Patrol;
+        return (int) Config.States.Invalid;
     }
 }

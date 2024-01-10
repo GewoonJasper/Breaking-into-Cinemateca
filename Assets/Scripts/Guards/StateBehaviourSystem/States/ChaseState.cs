@@ -22,7 +22,7 @@ public class ChaseState : AStates
 
     //animation values
     private float _initialSpeed;
-    private float _targetSpeed;
+    private float _targetSpeed = 1.0f;
 
     [SerializeField]
     private float _timeForTransition = 1.0f;
