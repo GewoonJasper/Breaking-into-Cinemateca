@@ -21,6 +21,12 @@ public class KeyPadControl : MonoBehaviour
     [SerializeField]
     private AudioSource _audioSource;
 
+    [SerializeField] 
+    private AudioSource _earpieceAudioSource;
+
+    [SerializeField]
+    private AudioClip _earpieceAudioClip;
+
     public AudioClip CorrectSound;
     public AudioClip IncorrectSound;
     public AudioClip ButtonSound;
@@ -114,6 +120,8 @@ public class KeyPadControl : MonoBehaviour
     private void CodeCorrect()
     {
         PlaySound(CorrectSound);
+        _earpieceAudioSource.clip = _earpieceAudioClip;
+        _earpieceAudioSource.Play();
 
         //Play door open animation
         //Later maybe change this to a grabbable door instead of animation

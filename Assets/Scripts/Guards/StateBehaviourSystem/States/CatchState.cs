@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class CatchState : AStates
 {
-    public GameObject Player;
     public CaughtMenu CaughtMenu;
 
     public override bool InitializeState()
     {
-        return Player;
+        return CaughtMenu;
     }
 
     public override void OnStateStart()
     {
-        Debug.Log("<color=purple>Entering Catch State</color>");
+        if (AssociatedStateMachine.DebugOn)
+            Debug.Log("<color=purple>Entering Catch State</color>");
+
+        AssociatedStateMachine.Audio.clip = AssociatedStateMachine.PlayerCaught;
+        AssociatedStateMachine.Audio.Play();
+        
         //TODO Guard catch animation
         CaughtMenu.PlayerCaught();
     }
@@ -21,11 +25,12 @@ public class CatchState : AStates
 
     public override void OnStateEnd()
     {
-        Debug.Log("<color=purple>Exiting Catch State</color>");
+        if (AssociatedStateMachine.DebugOn)
+            Debug.Log("<color=purple>Exiting Catch State</color>");
     }
 
     public override int StateTransitionCondition()
     {
-        return (int) Config.States.Patrol;
+        return (int) Config.States.Invalid;
     }
 }

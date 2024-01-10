@@ -17,6 +17,10 @@ public class IdleState : AStates
     private float _timeForTransition = 1.0f;
     private float _timer;
 
+    //Special case for the hallway guard
+    [SerializeField] 
+    private bool _hallwayGuard = false;
+
     public override bool InitializeState()
     {
         _targetSpeed = 0.0f;
@@ -26,7 +30,8 @@ public class IdleState : AStates
 
     public override void OnStateStart()
     {
-        Debug.Log("<color=cyan>Entering Idle State</color>");
+        if (AssociatedStateMachine.DebugOn)
+            Debug.Log("<color=cyan>Entering Idle State</color>");
 
         AssociatedStateMachine.Agent.speed = 0;
 
@@ -47,20 +52,28 @@ public class IdleState : AStates
     {
         AssociatedStateMachine.GuardAnimator.SetFloat("MovementSpeed", 0.0f);
         AssociatedStateMachine.GuardAnimator.SetFloat("RotationSpeed", 0.5f);
-        Debug.Log("<color=cyan>Exiting Idle State</color>");
+        
+        if (AssociatedStateMachine.DebugOn)
+            Debug.Log("<color=cyan>Exiting Idle State</color>");
     }
 
     public override int StateTransitionCondition()
     {
-        var number = Random.Range(1, 100);
-
         bool seenPlayer = AssociatedStateMachine.LineOfSight.SeenObject();
         if (seenPlayer)
         {
+            //If the guard is the hallway guard, go to the catch state instantly
+            if (_hallwayGuard) return (int) Config.States.Catch;
+
             AssociatedStateMachine.GuardAnimator.Play("Pointing");
+
+            AssociatedStateMachine.Audio.clip = AssociatedStateMachine.PlayerSeen;
+            AssociatedStateMachine.Audio.Play();
             return (int) Config.States.Chase;
         }
-        if (number <= _changeStateChance) return (int) Config.States.Patrol;
+
+        var number = Random.Range(1, 100);
+        if (!_hallwayGuard && number <= _changeStateChance) return (int) Config.States.Patrol;
         return (int) Config.States.Invalid;
     }
 }

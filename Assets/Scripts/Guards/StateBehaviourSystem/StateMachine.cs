@@ -7,6 +7,8 @@ using UnityEngine.AI;
 /// </summary>
 public class StateMachine : MonoBehaviour
 {
+    public bool DebugOn;
+
     //To control the movement for the guard over the navmesh
     public NavMeshAgent Agent;
 
@@ -26,6 +28,10 @@ public class StateMachine : MonoBehaviour
     //The current state that the guard is in
     private AStates _currentState;
 
+    public AudioSource Audio;
+    public AudioClip PlayerSeen;
+    public AudioClip PlayerCaught;
+
     /// <summary>
     /// Initializes each state
     /// </summary>
@@ -41,7 +47,8 @@ public class StateMachine : MonoBehaviour
                 continue;
             }
 
-            Debug.Log($"StateMachine On {gameObject.name} has failed to initalize the state {_stateBehaviours[i]?.GetType().Name}!");
+            if (DebugOn)
+                Debug.Log($"StateMachine On {gameObject.name} has failed to initalize the state {_stateBehaviours[i]?.GetType().Name}!");
             return false;
         }
 
@@ -66,7 +73,8 @@ public class StateMachine : MonoBehaviour
         }
         else
         {
-            Debug.Log($"StateMachine On {gameObject.name} is has no state behaviours associated with it!");
+            if (DebugOn)
+                Debug.Log($"StateMachine On {gameObject.name} is has no state behaviours associated with it!");
         }
     }
 

@@ -13,6 +13,14 @@ public class CaughtMenu : MonoBehaviour
 
     private bool _isCaught = false;
 
+    void Start()
+    {
+        //Hide the caught menu
+        foreach (Transform child in transform)
+            child.gameObject.SetActive(false);
+    }
+
+
     // Update is called once per frame
     void Update()
     {
@@ -32,14 +40,14 @@ public class CaughtMenu : MonoBehaviour
     {
         if (_isCaught) return;
 
-        //Switch pause state
+        //Switch caught state
         _isCaught = true;
 
-        //Show/hide the pause menu
+        //Show the caught menu
         foreach (Transform child in transform)
             child.gameObject.SetActive(true);
 
-        //(Un-)pause game
+        //Pause game
         Time.timeScale = 0;
         
         if (_rayInteractors.Count == 0) return;
